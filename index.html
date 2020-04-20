@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="plugins/fontawesome-free/css/all.css">
+    <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.css">
+    <link rel="stylesheet" href="dist/css/adminlte.css">
+    <title>Act 3</title>
+</head>
+<body class="login-page">
+    <div class="login-box">
+        <div class="login-logo">
+            <a href="#"><strong>CBTis</strong>#147</a>
+        </div>
+        <div class="card">
+            <div class="card-body login-card-body">
+                <p class="login-box-msg">Inicia sesión</p>
+                <form action="" id="frmLogin" method="post">
+                    <div class="input-group mb-3">
+                        <input type="text" name="nombre" id="nombres" placeholder="Nombre" class="form-control">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fa fa-user"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="text" name="apellido" id="apellidos" placeholder="Apellidos" class="form-control">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fa fa-user"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="email" name="correo" id="correos" placeholder="Correo electronico" class="form-control">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fa fa-envelope"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="password" name="contraseña" id="contraseñas" placeholder="Contraseña" class="form-control">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fa fa-lock"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="password" name="confirmarContraseñas" id="" placeholder="Confirmar contraseña" class="form-control">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fa fa-lock"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                            <button type="submit" class="btn btn-primary btn btn-block">Ingresar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="plugins/jquery-validation/jquery.validate.js"></script>
+    <script src="plugins/bootstrap/js/bootstrap.bundle.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.validate.js"></script>
+    <script src="js/additional-methods.js"></script>
+    <script src="dist/js/adminlte.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.validator.setDefaults({
+                submitHandler: function(){
+                    alert("Enviado");
+                }
+            });
+            $("#frmLogin").submit(function(e){
+                e.preventDefault();
+            }).validate({
+                rules:{
+                    "nombre":{
+                        required: true,
+                        minlength:3,
+                        maxlength: 50
+                    },
+                    "apellido":{
+                        required: true,
+                        minlength: 3,
+                        maxlength: 50
+                    },
+                    "correo":{
+                        required:true
+                    },
+                    "contraseña":{
+                        required:true,
+                        minlength: 8,
+                        maxlength: 50
+                    },
+                    "confirmarContraseña":{
+                        required: true,
+                        equalTo: "#contraseña" 
+                    },
+                },
+                messages:{
+                    "nombre":{
+                        required: "Ingresa tu usuario o nombre",
+                        minlength: "Debe contener almenos 3 caracteres",
+                        maxlength: "Maximo 50 caracteres"
+                    },
+                    "apellido":{
+                        required: "Ingresa tus apellidos",
+                        minlength: "Debe contener almenos 3 caracteres",
+                        maxlength: "Maximo 50 caracteres"
+                    },
+                    "correo":{
+                        required: "Ingresa tu correo",
+                    },
+                    "contraseña":{
+                        required: "Ingresa tu contraseña",
+                        minlength: "Ingresa almenos 8 caracteres",
+                        maxlength: "Maximo 50 caracteres"
+                    },
+                    "confirmarContraseña":{
+                        required: "Por seguridad confirma tu contraseña",
+                        equalTo: "Verifica si estan identicas"
+                    },
+                },
+                errorElement: "em",
+                errorPlacement: function(error, element){
+                    error.addClass("help-block");
+                    error.insertAfter(element);
+                }
+            })
+            });
+    </script>
+</body>
+</html>
